@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" /> <!-- encoding -->
+    <title>Lab1</title>
+    <link rel="shortcut icon" href="pinkicon.jpg" type="image/png">
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    <style>
+        #canvas {
+            height: 30vh;
+        }
+        .header-text{
+            color: black;
+            font-family: "cursive";
+            font-size: 20px;
+        }
+        .plot{;
+            border: 1px solid #333;
+            text-align: center;
+        }
+        table {
+            border-radius: 100px;
+
+            font-family: "cursive";
+            font-size: 14px;
+
+            width: 70%;
+            margin: auto;
+
+            text-align: center;
+            border-collapse: collapse;
+            border-top: 5px ridge #f1c8de;
+            border-bottom: 5px ridge #f1c8de;
+            border-right: 5px ridge #f1c8de;
+            border-left: 5px ridge #f1c8de;
+        }
+        th {
+            font-size: 13px;
+            font-weight: normal;
+            background: #f1c8de;
+            border-right: 1px ridge #bad6e7;
+            border-left: 1px ridge #bad6e7;
+            color: black;
+            padding: 8px;
+        }
+        td {
+            background: #bad6e7;
+            border-right: 1px ridge #bad6e7;
+            border-left: 1px ridge #bad6e7;
+            color: black;
+            padding: 8px;
+        }
+        th:hover {
+            font-size: 20px;
+        }
+        td:hover {
+            font-size: 20px;
+        }
+        .active {
+            background: #bad6e7;
+        }
+    </style>
+</head>
+    <body bgcolor="#931C14" background="pink.jpg">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th colspan="2" class="table"> <!-- header -->
+                        <div class="header-text">Май Тхи Ле Куен, P32302, вариант 3311 </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="plot"> <!-- graph here -->
+                    <td class="plot" colspan="2">
+                        <canvas id="canvas"></canvas>
+                    </td>
+                </tr>
+                <tr> <!-- there will be a choice from the checkbox X -->
+                    <td class="table">
+                        <div id="label_x">X = -2</div>
+                    </td>
+                    <td class="table">
+                        <input type="checkbox" value="-3" id="x_3" name="X" onclick="return set_x_value(id)">-3</input>
+                        <input type="checkbox" value="-2" id="x_2" name="X" onclick="return set_x_value(id)">-2</input>
+                        <input type="checkbox" value="-1" id="x_1" name="X" onclick="return set_x_value(id)">-1</input>
+                        <input type="checkbox" value="0" id="x0" name="X" onclick="return set_x_value(id)">0</input>
+                        <input type="checkbox" value="1" id="x1" name="X" onclick="return set_x_value(id)">1</input>
+                        <input type="checkbox" value="2" id="x2" name="X" onclick="return set_x_value(id)">2</input>
+                        <input type="checkbox" value="3" id="x3" name="X" onclick="return set_x_value(id)">3</input>
+                        <input type="checkbox" value="4" id="x4" name="X" onclick="return set_x_value(id)">4</input>
+                        <input type="checkbox" value="5" id="x5" name="X" onclick="return set_x_value(id)">5</input>
+                    </td>
+                </tr>
+
+                <tr> <!--input Y will be here -->
+                    <td class="table">
+                        <div id="label_y">Y = 0</div>
+                    </td>
+                    <td class="table">
+                       <input type="text" id="y_param" name="y">
+                    </td>
+                </tr>
+
+                <tr> <!--there will be a choice by the R radio-->
+                    <td class="table">
+                        <div id="label_r">R = 3</div>
+                    </td>
+                    <td class="table">
+                        <input type="radio" value="1" id="b1" name="R" onclick="set_R_value(id)"> 1</input>
+                        <input type="radio" value="2" id="b2" name="R" onclick="set_R_value(id)"> 2</input>
+                        <input type="radio" value="3" id="b3" name="R" onclick="set_R_value(id)"> 3</input>
+                        <input type="radio" value="4" id="b4" name="R" onclick="set_R_value(id)"> 4</input>
+                        <input type="radio" value="5" id="b5" name="R" onclick="set_R_value(id)"> 5</input>
+                    </td>
+                </tr>
+
+                <tr> <!-- there will be a confirmation button -->
+                    <td class="table">
+                        <label>Enter values</label>
+                    </td>
+                    <td>
+                        <form action="server_checking.php" method="GET">
+                            <button type="button" id="button" name="out_button">Check</button>
+                        </form>
+                    </td>
+                </tr>
+
+                <tr> <!-- there will be used values and times -->
+                    <td colspan="2">
+                        <table class="result-table">
+                            <thead>
+                                <td>X</td>
+                                <td>Y</td>
+                                <td>R</td>
+                                <td>RESULT</td>
+                                <td>Current time</td>
+                                <td>Computation time</td>
+                            </thead>
+                            <tbody id="table_out">
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <script type="text/javascript" src="Code_js/draw.js"></script>
+        <script type="text/javascript" src="Code_js/Valid.js"></script>
+        <script type="text/javascript" src="Code_js/get_out.js"></script>
+        <script type="text/javascript" src="Code_js/addToTable.js"></script>
+    </body>
+</html>
